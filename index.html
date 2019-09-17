@@ -11,41 +11,47 @@
             <header>
                 <h1>Song Reminder!</h1>
                 <form id="search-songs">
-                    <input type="text" placeholder="Search a Song..." />
+                    <input type="text" id="songSearch" placeholder="Search a Song..." />
                 </form>
             </header>
         </div>
+        
+        <form id="add-song">
+            <input type="text" id="addedSongName" placeholder="Add A Song..." />
+            <button>Add</button>
+        </form>
+
         <div id="song-list">
             <h2 class="title">Songs To Be Listened</h2>
-            <ul>
+            <ul id="listToListen">
                 <li>
                     <span class="name">Atmosphere - One Of A Kind</span>
-                    <span class="delete">listened</span>
+                    <span class="listened">listened</span>
                 </li>
                 <li>
                     <span class="name">A Tribe Called Quest - We Got The Jazz</span>
-                    <span class="delete">listened</span>
+                    <span class="listened">listened</span>
                 </li>
                 <li>
                     <span class="name">MURS - Trevor Anthem</span>
-                    <span class="delete">listened</span>
+                    <span class="listened">listened</span>
                 </li>
                 <li>
                     <span class="name">Sun Ra - Space Is The Place</span>
-                    <span class="delete">listened</span>
+                    <span class="listened">listened</span>
                 </li>
                 <li>
                     <span class="name">Rick Astley - Never Gonna Give You Up</span>
-                    <span class="delete">listened</span>
+                    <span class="listened">listened</span>
                 </li>
             </ul>
         </div>
-        <form id="add-song">
-            <input type="checkbox" id="hide" />
-            <label for="hide">Hide all songs</label>
-            <input type="text" placeholder="Add A Song..." />
-            <button>Add</button>
-        </form>
+
+        <div id="listened-list">
+            <h2 class="title">Songs I've Listened To</h2>
+            <ul id="listListenedTo">
+            </ul>
+        </div>
     </div>
     <script src="app.js"></script>
 </body>

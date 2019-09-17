@@ -1,50 +1,46 @@
-var songList = {
-    songs: [],
-    addSong: function(){
+document.addEventListener('DOMContentLoaded', function(){
 
-    },
-    changeSong: function(){
+    const list = document.querySelector('#song-list ul');
+    const listenedList = document.querySelector('#listened-list ul');
+    list.addEventListener('click', function(e){
+        if(e.target.className == 'listened'){
+            const li = e.target.parentElement;
+            li.getElementsByTagName('span')[1].remove();
+            listenedList.append(li);
+        }
+    })
 
-    },
-    deleteSong: function(){
+    const addForm = document.forms['add-song'];
+    addForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const value = document.getElementById('addedSongName').value;
 
-    },
-    toggleListened: function(){
+        const li = document.createElement('li');
+        const songName = document.createElement('span');
+        const btnListened = document.createElement('span');
 
-    },
-    toggleAll: function(){
+        songName.innerText = value;
+        btnListened.innerText = 'listened';
 
-    }
-};
+        songName.classList.add('name');
+        btnListened.classList.add('listened');
 
-var handlers = {
-    addSong: function(){
+        li.appendChild(songName);
+        li.appendChild(btnListened);
+        list.appendChild(li);
+    })
 
-    },
-    changeSong: function(){
-
-    },
-    deleteSong: function(){
-
-    },
-    toggleListened: function(){
-
-    },
-    toggleAll: function(){
-        
-    }
-};
-
-var view = {
-    displaySongs: function(){
-
-    },
-    createDeleteButton: function(){
-
-    },
-    setupEventListeners: function(){
-
-    }
-};
-
-view.setUpEventListeners();
+    const searchBar = document.getElementById('songSearch');
+    searchBar.addEventListener('keyup', function(e){
+        const term = e.target.value.toLowerCase();
+        const songs = list.getElementsByTagName('li');
+        Array.from(songs).forEach(function(song){
+            const name = song.firstElementChild.textContent;
+            if(name.toLowerCase().indexOf(term) != -1){
+                song.style.display = 'block';
+            }else{
+                song.style.display = 'none';
+            }
+        })
+    })
+})
